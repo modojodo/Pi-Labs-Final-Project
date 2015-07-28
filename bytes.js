@@ -186,7 +186,7 @@ collection.findOne({email:mail},{},function(e,docs2){
 function fetchProductsFromDB(collectionName, res ){
   var collect=db.get(collectionName);
   collect.find({},{},function(e,docs){
-    console.log(collectionName,docs);
+    //console.log(collectionName,docs);
     if(docs)
     {
        sendData(res,docs);
@@ -200,7 +200,6 @@ function fetchProductsFromDB(collectionName, res ){
 }
 function findProduct(res,ind,collectionName){
   var collect=db.get(collectionName);
-  console.log("ind ko check kr rha !",ind);
   collect.findOne({_id:ind},{},function(e,docs){
     console.log("Product",docs);
     if(docs)
@@ -224,12 +223,10 @@ function findProduct(res,ind,collectionName){
 
 app.get('/getBytesSamsung', function(req, res){
   var obj=fetchProductsFromDB("Bytessamsungcollection",res);
-  console.log("checking object",obj);
+  //console.log("checking object",obj);
 });
 
 app.get('/getBytesSamsung/*', function(req, res){
-
-  console.log("quer id",req.params[0]);
   var abc=req.params[0];
 
   if(abc)
@@ -245,11 +242,11 @@ app.listen(port);
 
 function sendData(res,obj)
 {
-  console.log("finally checking object",obj);
+  //console.log("finally checking object",obj);
   res.send(obj);
 }
 /*
-function ensureAuthenticated(req, res, next) 
+function ensureAuthenticated(req, res, next)
 {
   if (req.isAuthenticated()) {
  return next(); }

@@ -27,7 +27,7 @@ angular.module('myApp', [
 ])
     .config(['$routeProvider', function($routeProvider) {
       $routeProvider.
-          when("/Single-Product/:id", {templateUrl: "partials/Single-Product.html", controller: "displayDetails"}).
+          when("/Single-Product/:id", {templateUrl: "partials/single-product.html", controller: "displayDetails"}).
           when("/home", {templateUrl: "partials/home.html", controller: "getBytesProductsSamsung"}).
 
           otherwise({redirectTo: '/home'});

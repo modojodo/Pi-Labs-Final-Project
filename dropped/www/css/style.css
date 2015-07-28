@@ -1,1 +1,8 @@
 /* Empty. Add your own CSS if you like */
+
+.item-avatar img {
+    background-color: white;
+}
+.item-center{
+text-align: center;
+}
