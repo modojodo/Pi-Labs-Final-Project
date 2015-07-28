@@ -8,10 +8,15 @@ app.controller('getBytesProductsSamsung', ['$scope', 'myService', function ($sco
         console.log($scope.products);
     });
 
-}]).controller('getDetails', ['$scope', 'myService', '$routeParams', '$stateParams', function ($scope, myService, $routeParams, $stateParams) {
+}]).controller('getDetails', ['$scope', 'myService', '$routeParams', '$stateParams','$ionicHistory', function ($scope, myService, $routeParams, $stateParams,$ionicHistory) {
     $scope.id = $stateParams.id;
     console.log($stateParams);
     $scope.products;
+    $scope.myGoBack = function() {
+        $ionicHistory.goBack();
+        console.log("I want toGoBack")
+
+    };
     myService.getBytesSamsungWithId($scope.id).success(function (res){
 
         $scope.product = res;
