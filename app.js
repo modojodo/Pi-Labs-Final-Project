@@ -6,9 +6,9 @@
 var request = require('request');
 var cheerio = require('cheerio');
 var db = require('monk')('umer:1234@ds061318.mongolab.com:61318/dropped');
-
+var port = process.env.PORT || 3030;
 // Homeshopping producs IDs
-
+var express = require('express')
 var APPLE_ID = 227;
 var SAMSUNG_ID = 30;
 var HTC_ID = 29;
@@ -21,7 +21,7 @@ var apple = "applecollection";
 var qmobile = "qmobilecollection";
 var htc = "htccollection"
 
-
+//http://www.daraz.pk/phones/"+brand_id+"/?pathInfo=phones%2F"+brand_id+"&page="+page
 
 
 // arrays to store fetched data of the products
@@ -35,6 +35,19 @@ getProducts(SAMSUNG_ID, samsung);
 getProducts(APPLE_ID, apple);
 getProducts(HTC_ID, qmobile);
 getProducts(QMOBILE_ID, htc);
+var app = express();
+
+
+
+app.use(function(req,res,next){
+    req.db = db;
+    next();
+})
+
+app.use(express.static(__dirname + '/public'));
+
+
+
 
 function getProducts(brand_id, storage) {
     var page = 1;
@@ -97,6 +110,7 @@ function getProducts(brand_id, storage) {
     }, 10000);
 }
 
+app.listen(port);
 
 
 
