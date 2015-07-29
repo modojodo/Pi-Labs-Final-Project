@@ -1,0 +1,20 @@
+<div class="list" ng-app="dropped">
+    <form  ng-controller="registerUser" ng-submit="register()" name="myForm" novalidate>
+    <label class="item item-input item-floating-label">
+        <span class="input-label">UserName :</span>
+        <input type="text" name="username" placeholder="UserName" ng-model="username" required>
+    </label>
+    <label class="item item-input item-floating-label">
+        <span class="input-label">Password :</span>
+        <input type="password" name="password" placeholder="Password" ng-model="password" required>
+    </label>
+    <label class="item item-input item-floating-label">
+        <span class="input-label">Email</span>
+        <input type="email" name="email" placeholder="Email" ng-model="email" required>
+    </label>
+    <button   type="submit" >
+        Create Account
+    </button>
+        </form>
+
+</div>

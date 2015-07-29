@@ -1,28 +1,5 @@
-<style>
-
-
-</style>
-<ion-pane>
-	<ion-header-bar class="bar-stable">
-		<h1 class="title">Available Products</h1>
-	</ion-header-bar>
-	<ion-content>
-		<div class="list">
-
-			<div ng-repeat="product in products">
-				<a class="item item-avatar" ng-href='/#/details/{{product._id}}'>
-					<img class="product-thumbnail" src={{product.productImg}}>
-
-					<div>
-						<h2>{{product.productName}}</h2>
-
-						<p>{{product.productPrice}}</p>
-					</div>
-				</a>
-
-			</div>
-
-		</div>
-	</ion-content>
-
-</ion-pane>
+<h1>Price Dikha</h1>
+<a ng-href="/#/login"><button class="button  button-blue">
+	Login
+</button></a>
+<a ng-href="/#/register"><h3>Dont Have an Account ?</h3></a>

@@ -130,13 +130,18 @@ passport.use(new LocalStrategy(
 app.use(express.static(__dirname + '/dropped/www'));
 
 
-/*app.post('/login', 
+app.post('/login',
   passport.authenticate('local', { failureRedirect: '/loginFailure'}),
   function(req, res) {
    
 
     res.send({sucess:true});
   });
+app.get('/login', function(req, res){
+    res.send({msg:"login kr"});
+});
+
+
 app.get('/loginFailure', function(req, res){
   res.send({error:true})
 });
@@ -146,10 +151,10 @@ var collection = req.db.get("loginUsers");
 var mail=req.body.email;            
 collection.findOne({email:mail},{},function(e,docs2){
   console.log("checking docs 2",docs2);
-    if(docs2)
+    if(docs2 !=null)
     {
-      var obj=('<a href="register.html">Go back</a>');
-       res.send("This email id is already present in the database "+obj);
+      var obj=('Used');
+       res.send(obj);
     }
     else 
     {
@@ -158,8 +163,8 @@ collection.findOne({email:mail},{},function(e,docs2){
       collection.findOne({username:id},{},function(e,docs3){
         if(docs3)
         {
-          var obj=('<a href="register.html">Go back</a>');
-       res.send("This user id is already present in the database "+obj);
+          var obj=('Used');
+       res.send(obj);
         }
         else
         {
@@ -170,7 +175,7 @@ collection.findOne({email:mail},{},function(e,docs2){
             res.send("There was a problem adding the information to the database.");
         }
         else {
-            res.redirect("/");
+            res.redirect("/#/products");
         }
         });
       }
@@ -181,7 +186,7 @@ collection.findOne({email:mail},{},function(e,docs2){
 
     // Submit to the DB
 
-  });*/
+  });
 
 function fetchProductsFromDB(collectionName, res ){
   var collect=db.get(collectionName);
@@ -213,12 +218,12 @@ function findProduct(res,ind,collectionName){
   });
 
 }
-/*app.get('/logout', function(req, res){
+app.get('/logout', function(req, res){
   req.logout();
 
  // res.redirect("/#/blog");
   
-});*/
+});
 
 
 app.get('/getBytesSamsung', function(req, res){
@@ -245,7 +250,6 @@ function sendData(res,obj)
   //console.log("finally checking object",obj);
   res.send(obj);
 }
-/*
 function ensureAuthenticated(req, res, next)
 {
   if (req.isAuthenticated()) {
@@ -253,7 +257,6 @@ function ensureAuthenticated(req, res, next)
   res.redirect("/#/login");
 }
 
-*/
 
 
 function getProducts(brand_id, storage,match) {
