@@ -5,8 +5,8 @@ var express = require('express')
   , passport = require('passport')
   , util = require('util')
   , LocalStrategy = require('passport-local').Strategy;
-
-var port = process.env.PORT || 3030;
+var crypto = require("crypto");
+var port = process.env.PORT || 8100;
 
 var dburl = "localhost:27017/blogdb";
 var request = require('request');
@@ -121,7 +121,11 @@ passport.use(new LocalStrategy(
 
       if (err) { return done(err); }
       if (!user) { return done(null, false, { message: 'Unknown user ' + username }); }
-      if (user.password != password) { return done(null, false, { message: 'Invalid password' }); }
+        var OldPassword=user.password.password
+        console.log("This is an Old   "+OldPassword);
+        var NewPassword=hash(password,user.password.salt);
+        console.log("This is a New   "+NewPassword);
+      if (OldPassword != NewPassword) { console.log("Error");return done(null, false, { message: 'Invalid password' }); }
       return done(null, user);
     });
   }
@@ -169,7 +173,10 @@ collection.findOne({email:mail},{},function(e,docs2){
         else
         {
             console.log("pushing in the database!!!");
-            collection.insert(req.body, function (err, doc) {
+            var saltPass=newSalt(16);
+            var pass={password:hash(req.body.password, saltPass) , salt : saltPass};
+            var obje={username:req.body.username,email:req.body.email,password:pass};
+            collection.insert(obje, function (err, doc) {
         if (err) {
             // If it failed, return error
             res.send("There was a problem adding the information to the database.");
@@ -257,8 +264,14 @@ function ensureAuthenticated(req, res, next)
   res.redirect("/#/login");
 }
 
+function newSalt(size) {
 
-
+    return crypto.randomBytes(size).toString('hex');
+}
+function hash(password, salt) {
+    var sha256 = crypto.createHash('sha256').update(salt + password).digest("hex");
+    return sha256;
+}
 function getProducts(brand_id, storage,match) {
     var page = 1;
     // var obj;
