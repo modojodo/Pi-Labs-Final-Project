@@ -6,7 +6,7 @@ var express = require('express')
   , util = require('util')
   , LocalStrategy = require('passport-local').Strategy;
 var crypto = require("crypto");
-var port = process.env.PORT || 8100;
+var port = process.env.PORT || 3030;
 
 var dburl = "localhost:27017/blogdb";
 var request = require('request');
