@@ -40,9 +40,9 @@ app.controller('registerUser',['$scope','myService','$location','$rootScope', fu
     $scope.login=function()
     {
         console.log("i AM login")
-        var abc={username:$scope.username,password:$scope.password};
-        console.log("loggin in ka object",abc);
-        myService.login(abc).success(function(res){
+        var userObj={username:$scope.username,password:$scope.password};
+        console.log("loggin in ka object",userObj);
+        myService.login(userObj).success(function(res){
             console.log(res);
             if(res.error)
             {
@@ -96,12 +96,12 @@ app.controller('registerUser',['$scope','myService','$location','$rootScope', fu
     .factory('myService', function ($http) {
 
         var ergastAPI = {};
-        ergastAPI.login=function(abc)
+        ergastAPI.login=function(userObj)
         {
             var req = {
                 method: 'POST',
                 url: '/login',
-                data: abc
+                data: userObj
             };
             return $http(req);
         }
@@ -141,7 +141,7 @@ app.controller('registerUser',['$scope','myService','$location','$rootScope', fu
 
         $stateProvider.state('products', {
             url: '/products',
-            templateUrl: '/partials/Products.html',
+            templateUrl: '/partials/products.html',
             controller: 'getBytesProductsSamsung'
         });
         $stateProvider.state('details', {
@@ -151,7 +151,7 @@ app.controller('registerUser',['$scope','myService','$location','$rootScope', fu
         });
         $stateProvider.state('login', {
             url: '/login',
-            templateUrl: '/partials/Login.html',
+            templateUrl: '/partials/login.html',
             controller: "loginUser"
 
         });
