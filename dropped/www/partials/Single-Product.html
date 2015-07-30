@@ -1,19 +1,17 @@
-
-
 <ion-pane class="back-color">
+	<ion-header-bar class="bar-stable">
+		<button class="button-clear" ng-click="myGoBack()">
+			<i class="button icon-left ion-chevron-left button-clear button-dark"></i>
+		</button>
+		<h1 class="title" style="text-align:center;">Product Detail</h1>
+		<button ng-controller="logOut" class="button button-positive" ng-click="logout()">Logout</button>
+	</ion-header-bar>
+	<ion-spinner class="loader" ng-hide="loader"></ion-spinner>
+	<ion-content>
 
-    			<ion-header-bar class="bar-stable">
-				<button class="button-clear" ng-click="myGoBack()">
-					<i class="button icon-left ion-chevron-left button-clear button-dark"></i>
-				</button>
-				<h1 class="title" style="text-align:center;">Product Detail</h1>
-				<button ng-controller="logOut" class="button button-positive" ng-click="logout()" >Logout</button>
-			</ion-header-bar>
-			<ion-spinner class="loader" ng-hide="loading"></ion-spinner>
-			<ion-content>
-				<div class="list card item-center  back-color" ng-show="loading">
+		<div class="list card item-center  back-color" ng-show="loader">
 
-            <div class="item back-color">
+			<div class="item back-color">
 
 
 				<h2>{{product.productName}}</h2>
@@ -21,8 +19,8 @@
 			</div>
 
 
-            <div class="item item-body back-color">
-                <img class="" src={{product.productImg}}>
+			<div class="item item-body back-color">
+				<img class="" src={{product.productImg}}>
 
 			</div>
 

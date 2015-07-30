@@ -87,10 +87,10 @@ app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope'
     }
 }]).controller('getBytesProductsSamsung', ['$scope', 'myService', function ($scope, myService) {
     $scope.products = [];
-    $scope.loading=false;
+    $scope.loader=false;
     myService.getBytesSamsung().success(function (res) {
         $scope.products = res;
-        $scope.loading=true;
+        $scope.loader=true;
 
         console.log($scope.products);
 
@@ -98,7 +98,7 @@ app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope'
 
 }]).controller('getDetails', ['$scope', 'myService', '$routeParams', '$stateParams', '$ionicHistory', function ($scope, myService, $routeParams, $stateParams, $ionicHistory) {
     $scope.id = $stateParams.id;
-    $scope.loading= false;
+    $scope.loader= false;
     console.log($stateParams);
     $scope.products;
     $scope.myGoBack = function () {
@@ -106,7 +106,7 @@ app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope'
     };
     myService.getBytesSamsungWithId($scope.id).success(function (res) {
         $scope.product = res;
-        $scope.loading=true;
+        $scope.loader=true;
 
         console.log($scope.product);
 
