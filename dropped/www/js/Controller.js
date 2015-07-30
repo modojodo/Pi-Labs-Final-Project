@@ -15,9 +15,7 @@ app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope'
 
         console.log("IwantToRegister")
         console.log(abc);
-        $scope.username = '';
-        $scope.email = '';
-        $scope.password = '';
+
         console.log(abc);
 
         if(form.$valid){

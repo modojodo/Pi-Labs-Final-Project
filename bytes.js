@@ -19,7 +19,7 @@ var db = require('monk')('umer:1234@ds061318.mongolab.com:61318/dropped');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-
+var sess;
 
 var samsung = "Bytessamsungcollection";
 var apple = "Bytesapplecollection";
