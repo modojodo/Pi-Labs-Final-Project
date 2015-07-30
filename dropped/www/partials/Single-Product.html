@@ -1,42 +1,39 @@
-
 <ion-pane>
+	<ion-header-bar class="bar-stable">
+		<button class="button-clear" ng-click="myGoBack()">
+			<i class="button icon-left ion-chevron-left button-clear button-dark"></i>
+		</button>
+		<h1 class="title" style="text-align:center;">Product Detail</h1>
+		<a class="button button-positive" href="/logout">Logout</a>
+	</ion-header-bar>
+	<ion-spinner class="loader" ng-hide="loading"></ion-spinner>
+	<ion-content>
+		<div class="list card item-center" ng-show="loading">
 
-    <ion-header-bar class="bar-stable">
-        <button class="button-clear" ng-click="myGoBack()">
-            <i class="button icon-left ion-chevron-left button-clear button-dark"></i>
-        </button>
-        <h1 class="title" style="text-align:center;">Product Detail</h1>
-        <a class="button button-positive" href="/logout">Logout</a>
-    </ion-header-bar>
+			<div class="item">
 
-    <ion-content>
-        <ion-spinner icon="ripple"></ion-spinner>
-        <div class="list card item-center">
+				<h2>{{product.productName}}</h2>
 
-            <div class="item">
+			</div>
 
-                <h2>{{product.productName}}</h2>
-
-            </div>
-
-            <div class="item item-body ">
-                <img class="" src={{product.productImg}}>
+			<div class="item item-body ">
+				<img class="" src={{product.productImg}}>
 
 
-            </div>
+			</div>
 
-            <div class="item  tabs-secondary tabs-icon-left">
-                <button class="button  button-white">
-                  {{product.productPrice}}
-                </button>
-                <button class="button  button-royal">
-                    Watch It!
-                </button>
+			<div class="item  tabs-secondary tabs-icon-left">
+				<button class="button  button-white">
+					{{product.productPrice}}
+				</button>
+				<button class="button  button-royal">
+					Watch It!
+				</button>
 
-            </div>
+			</div>
 
-        </div>
+		</div>
 
-    </ion-content>
+	</ion-content>
 
 </ion-pane>

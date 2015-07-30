@@ -2,28 +2,28 @@
 
 
 </style>
-<ion-pane >
-    <ion-header-bar class="bar-stable">
-        <h1 class="title">Available Products</h1>
-        <a class="button button-positive" ng-href="/#/logout">Logout</a>
-    </ion-header-bar>
-    <ion-content>
-        <div class="list">
+<ion-pane>
+	<ion-header-bar class="bar-stable">
+		<h1 class="title">Available Products</h1>
+		<a class="button button-positive" ng-href="/#/logout">Logout</a>
+	</ion-header-bar>
+	<ion-spinner class="loader" ng-hide="loading"></ion-spinner>
+	<ion-content>
+		<div class="list" ng-show="loading">
+			<div ng-repeat="product in products">
+				<a class="item item-avatar" ng-href='/#/details/{{product._id}}'>
+					<img class="product-thumbnail" src={{product.productImg}}>
 
-            <div ng-repeat="product in products">
-                <a class="item item-avatar" ng-href='/#/details/{{product._id}}'>
-                    <img class="product-thumbnail" src={{product.productImg}}>
+					<div>
+						<h2>{{product.productName}}</h2>
 
-                    <div>
-                        <h2>{{product.productName}}</h2>
+						<p>{{product.productPrice}}</p>
+					</div>
+				</a>
 
-                        <p>{{product.productPrice}}</p>
-                    </div>
-                </a>
+			</div>
 
-            </div>
-
-        </div>
-    </ion-content>
+		</div>
+	</ion-content>
 
 </ion-pane>

@@ -1,57 +1,50 @@
 var app = angular.module('dropped', ['ionic', 'ngRoute']);
-app.controller('registerUser',['$scope','myService','$location','$rootScope', function($scope,myService,$location,$rootScope,$state) {
-   // $rootScope.location = $location.path();
+app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope', function ($scope, myService, $location, $rootScope, $state) {
+    // $rootScope.location = $location.path();
     console.log("Hello World")
-    $scope.username='';
-    $scope.email='';
-    $scope.password='';
+    $scope.username = '';
+    $scope.email = '';
+    $scope.password = '';
 
 
     $scope.register = function () {
-        var abc={username:$scope.username,email:$scope.email,password:$scope.password}
+        var abc = {username: $scope.username, email: $scope.email, password: $scope.password}
         console.log("IwantToRegister")
         console.log(abc);
-        $scope.username='';
-        $scope.email='';
-        $scope.password='';
+        $scope.username = '';
+        $scope.email = '';
+        $scope.password = '';
         console.log(abc);
-        myService.registerUser(abc).success(function(res){
+        myService.registerUser(abc).success(function (res) {
 
-            if(res=="Used")
-            {
+            if (res == "Used") {
                 alert("This user has already an accout")
                 $location.path('/register')
             }
-            else
-            {
+            else {
                 console.log("inElse");
-                $rootScope.loggedIn=true;
+                $rootScope.loggedIn = true;
                 $location.path("/login");
             }
         });
 
 
-
     }
 
-}]).controller('loginUser',['$scope','myService','$location',function($scope,myService,$location)
-{
-  //  $rootScope.location = $location.path();
-    $scope.login=function()
-    {
+}]).controller('loginUser', ['$scope', 'myService', '$location', function ($scope, myService, $location) {
+    //  $rootScope.location = $location.path();
+    $scope.login = function () {
         console.log("i AM login")
-        var userObj={username:$scope.username,password:$scope.password};
-        console.log("loggin in ka object",userObj);
-        myService.login(userObj).success(function(res){
+        var userObj = {username: $scope.username, password: $scope.password};
+        console.log("loggin in ka object", userObj);
+        myService.login(userObj).success(function (res) {
             console.log(res);
-            if(res.error)
-            {
+            if (res.error) {
                 $location.path('/login')
 
             }
-            else
-            {
-             //   $rootScope.loggedIn=true;
+            else {
+                //   $rootScope.loggedIn=true;
                 $location.path('products')
 
             }
@@ -60,35 +53,28 @@ app.controller('registerUser',['$scope','myService','$location','$rootScope', fu
     }
 }]).controller('getBytesProductsSamsung', ['$scope', 'myService', function ($scope, myService) {
     $scope.products = [];
+    $scope.loading=false;
     myService.getBytesSamsung().success(function (res) {
-
-
         $scope.products = res;
-        console.log($scope.products);
+        $scope.loading=true;
     });
 
-}]).controller('getDetails', ['$scope', 'myService', '$routeParams', '$stateParams','$ionicHistory', function ($scope, myService, $routeParams, $stateParams,$ionicHistory) {
+}]).controller('getDetails', ['$scope', 'myService', '$routeParams', '$stateParams', '$ionicHistory', function ($scope, myService, $routeParams, $stateParams, $ionicHistory) {
     $scope.id = $stateParams.id;
+    $scope.loading= false;
     console.log($stateParams);
     $scope.products;
-    $scope.myGoBack = function() {
+    $scope.myGoBack = function () {
         $ionicHistory.goBack();
-        console.log("I want toGoBack")
-
     };
-    myService.getBytesSamsungWithId($scope.id).success(function (res){
-
+    myService.getBytesSamsungWithId($scope.id).success(function (res) {
         $scope.product = res;
-        console.log($scope.product);
-
+        $scope.loading=true;
     });
 
-}]).controller('logOut',['$scope','myService','$location',function($scope,myService,$location)
-{
-    //  $rootScope.location = $location.path();
-    $scope.logout=function()
-    {
-       console.log('LoggedOut');
+}]).controller('logOut', ['$scope', 'myService', '$location', function ($scope, myService, $location) {
+    $scope.logout = function () {
+        console.log('LoggedOut');
         $location.path('home');
 
     }
@@ -96,8 +82,7 @@ app.controller('registerUser',['$scope','myService','$location','$rootScope', fu
     .factory('myService', function ($http) {
 
         var ergastAPI = {};
-        ergastAPI.login=function(userObj)
-        {
+        ergastAPI.login = function (userObj) {
             var req = {
                 method: 'POST',
                 url: '/login',
@@ -105,8 +90,7 @@ app.controller('registerUser',['$scope','myService','$location','$rootScope', fu
             };
             return $http(req);
         }
-        ergastAPI.registerUser=function(data)
-        {
+        ergastAPI.registerUser = function (data) {
             var req = {
                 method: 'POST',
                 url: '/register',
