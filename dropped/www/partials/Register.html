@@ -1,14 +1,20 @@
-<div class="list row" ng-app="dropped">
-	<form class="col col-center" ng-controller="registerUser" ng-submit="register()" name="myForm" novalidate>
-		<label class="item item-input item-floating-label">
+<div class="list row back-color" ng-app="dropped">
+	<form class="col col-center" ng-controller="registerUser" ng-submit="register(authorizationForm)" name="authorizationForm"  novalidate="">
+		<label class="item item-input item-floating-label" ng-class="{ 'has-errors' : authorizationForm.username.$invalid, 'no-errors' : authorizationForm.username.$valid}">
 			<span class="input-label">UserName :</span>
-			<input type="text" name="username" placeholder="UserName" ng-model="username" required>
+			<input type="text" name="username" placeholder="UserName" ng-model="username" ng-minlength="5" ng-maxlength="20" required>
 		</label>
-		<label class="item item-input item-floating-label">
+		<div class="error-container" ng-show="authorizationForm.username.$error" ng-messages="authorizationForm.username.$error">
+			<div ng-messages-include="error-list.html"></div>
+		</div>
+		<label class="item item-input item-floating-label" ng-class="{ 'has-errors' : authorizationForm.password.$invalid && authorizationForm.$submitted, 'no-errors' : authorizationForm.password.$valid  && authorizationForm.$submitted}">
 			<span class="input-label">Password :</span>
-			<input type="password" name="password" placeholder="Password" ng-model="password" required>
+			<input type="password" name="password" placeholder="Password" ng-model="password" ng-minlength="5" ng-maxlength="20" required>
 		</label>
-		<label class="item item-input item-floating-label">
+		<div class="error-container last-error-container" ng-show="authorizationForm.password.$error && authorizationForm.$submitted" ng-messages="authorizationForm.password.$error">
+			<div ng-messages-include="error-list.html"></div>
+		</div>
+		<label class="item item-input item-floating-label" ng-class="{ 'has-errors' : authorizationForm.email.$invalid && authorizationForm.$submitted, 'no-errors' : authorizationForm.email.$valid  && authorizationForm.$submitted}">
 			<span class="input-label">Email</span>
 			<input type="email" name="email" placeholder="Email" ng-model="email" required>
 		</label>
@@ -16,5 +22,18 @@
 			Create Account
 		</button>
 	</form>
-
+	<script id="error-list.html" type="text/ng-template">
+		<div class="error" ng-message="required">
+			<i class="ion-information-circled"></i>
+			This field is required!
+		</div>
+		<div class="error" ng-message="minlength">
+			<i class="ion-information-circled"></i>
+			Minimum length of this field is 5 characters!
+		</div>
+		<div class="error" ng-message="maxlength">
+			<i class="ion-information-circled"></i>
+			Maximum length of this field is 20 characters!
+		</div>
+	</script>
 </div>

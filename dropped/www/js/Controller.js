@@ -1,21 +1,37 @@
+<<<<<<< HEAD
+var app = angular.module('dropped', ['ionic', 'ngRoute','ngMessages']);
+app.controller('registerUser',['$scope','myService','$location','$rootScope', function($scope,myService,$location,$rootScope,$state) {
+   // $rootScope.location = $location.path();
+=======
 var app = angular.module('dropped', ['ionic', 'ngRoute']);
 app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope', function ($scope, myService, $location, $rootScope, $state) {
     // $rootScope.location = $location.path();
+>>>>>>> 50c58b5f35eb380d439ae5c15cee0725b4bafe77
     console.log("Hello World")
     $scope.username = '';
     $scope.email = '';
     $scope.password = '';
 
 
+<<<<<<< HEAD
+    $scope.register = function (form) {
+        var abc={username:$scope.username,email:$scope.email,password:$scope.password}
+=======
     $scope.register = function () {
         var abc = {username: $scope.username, email: $scope.email, password: $scope.password}
+>>>>>>> 50c58b5f35eb380d439ae5c15cee0725b4bafe77
         console.log("IwantToRegister")
         console.log(abc);
         $scope.username = '';
         $scope.email = '';
         $scope.password = '';
         console.log(abc);
+<<<<<<< HEAD
+        if(form.$valid){
+        myService.registerUser(abc).success(function(res){
+=======
         myService.registerUser(abc).success(function (res) {
+>>>>>>> 50c58b5f35eb380d439ae5c15cee0725b4bafe77
 
             if (res == "Used") {
                 alert("This user has already an accout")
@@ -26,11 +42,38 @@ app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope'
                 $rootScope.loggedIn = true;
                 $location.path("/login");
             }
-        });
+        })};
 
 
     }
 
+<<<<<<< HEAD
+}]).controller('loginUser',['$scope','myService','$location',function($scope,myService,$location)
+{
+  //  $rootScope.location = $location.path();
+    $scope.login=function(form)
+    {
+        console.log("i AM login")
+        var userObj={username:$scope.username,password:$scope.password};
+        console.log("loggin in ka object",userObj);
+        if(form.$valid) {
+            myService.login(userObj).success(function (res) {
+                console.log(res);
+                if (res.error) {
+                    alert("Error")
+                    $scope.username="";
+                    $scope.password="";
+                    $location.path('login')
+
+                }
+                else {
+                    //   $rootScope.loggedIn=true;
+                    $location.path('products')
+
+                }
+            });
+        }
+=======
 }]).controller('loginUser', ['$scope', 'myService', '$location', function ($scope, myService, $location) {
     //  $rootScope.location = $location.path();
     $scope.login = function () {
@@ -50,6 +93,7 @@ app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope'
             }
         });
 
+>>>>>>> 50c58b5f35eb380d439ae5c15cee0725b4bafe77
     }
 }]).controller('getBytesProductsSamsung', ['$scope', 'myService', function ($scope, myService) {
     $scope.products = [];
@@ -57,6 +101,10 @@ app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope'
     myService.getBytesSamsung().success(function (res) {
         $scope.products = res;
         $scope.loading=true;
+<<<<<<< HEAD
+        console.log($scope.products);
+=======
+>>>>>>> 50c58b5f35eb380d439ae5c15cee0725b4bafe77
     });
 
 }]).controller('getDetails', ['$scope', 'myService', '$routeParams', '$stateParams', '$ionicHistory', function ($scope, myService, $routeParams, $stateParams, $ionicHistory) {
@@ -70,6 +118,11 @@ app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope'
     myService.getBytesSamsungWithId($scope.id).success(function (res) {
         $scope.product = res;
         $scope.loading=true;
+<<<<<<< HEAD
+        console.log($scope.product);
+
+=======
+>>>>>>> 50c58b5f35eb380d439ae5c15cee0725b4bafe77
     });
 
 }]).controller('logOut', ['$scope', 'myService', '$location', function ($scope, myService, $location) {
