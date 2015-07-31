@@ -87,10 +87,10 @@ app.use(cookieParser());
 //app.use(express.methodOverride());
 app.use(session({
   
-  secret: 'keyboard cat'
-  //resave: true,
-  //saveUninitialized: true,
-  //cookie : { secure : false, maxAge : (40 * 60 * 60 * 1000)}, // 4 hours
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true,
+  cookie : { secure : false, maxAge : (40 * 60 * 60 * 1000)}, // 4 hours
 }));
 
 app.use(passport.initialize());
@@ -226,12 +226,18 @@ function findProduct(res,ind,collectionName){
 
 }
 app.get('/logout', function(req, res){
+  req.session.destroy();
+  req.session=null;
   req.logout();
-
- // res.redirect("/#/blog");
+ res.send(true);
   
 });
-
+app.get('/isAuthenticated',function(req, res){
+  if (req.isAuthenticated()) 
+ res.send(true);
+ else
+ res.send(false) ;
+});
 
 app.get('/getBytesSamsung', function(req, res){
   var obj=fetchProductsFromDB("Bytessamsungcollection",res);

@@ -1,5 +1,6 @@
-<ion-pane class="back-color">
-	<ion-header-bar class="bar-stable">
+<ion-pane class="back-color" ng-controller="Authentication">
+	<input value="Products" type="text" name="page"></input>
+	<ion-header-bar class="bar-stable"  >
 		<h1 class="title">Available Products</h1>
 		<button ng-controller="logOut" class="button button-positive" ng-click="logout()">Logout</button>
 	</ion-header-bar>

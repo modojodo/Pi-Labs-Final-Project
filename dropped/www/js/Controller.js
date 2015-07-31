@@ -10,6 +10,7 @@ app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope'
 
 
 
+
     $scope.register = function (form) {
         var abc={username:$scope.username,email:$scope.email,password:$scope.password}
 
@@ -64,27 +65,6 @@ app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope'
         }
     }
 
-}]).controller('loginUser', ['$scope', 'myService', '$location', function ($scope, myService, $location) {
-    //  $rootScope.location = $location.path();
-    $scope.login = function () {
-        console.log("i AM login")
-        var userObj = {username: $scope.username, password: $scope.password};
-        console.log("loggin in ka object", userObj);
-        myService.login(userObj).success(function (res) {
-            console.log(res);
-            if (res.error) {
-                $location.path('/login')
-
-            }
-            else {
-                //   $rootScope.loggedIn=true;
-                $location.path('products')
-
-            }
-        });
-
-
-    }
 }]).controller('getBytesProductsSamsung', ['$scope', 'myService', function ($scope, myService) {
     $scope.products = [];
     $scope.loader=false;
@@ -114,15 +94,49 @@ app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope'
     });
 
 }]).controller('logOut', ['$scope', 'myService', '$location', function ($scope, myService, $location) {
+    
     $scope.logout = function () {
-        console.log('LoggedOut');
-        $location.path('home');
+        
+myService.logout().success(function (res) {
+             
+        $location.path("home");
 
+
+    });
     }
+}]).controller('Authentication', ['$scope', 'myService','$location', function ($scope, myService,$location) {
+    console.log($scope.page);
+  myService.isAuthenticated().success(function (res) {
+    console.log("Authentication Called");
+        if(res==true){
+             $location.path('products')
+        }
+        else{
+             $location.path('home')
+        }
+            
+
+    });
 }])
     .factory('myService', function ($http) {
 
         var ergastAPI = {};
+         ergastAPI.isAuthenticated = function () {
+            var req = {
+                method: 'GET',
+                url: '/isAuthenticated',
+                
+            };
+            return $http(req);
+        }
+         ergastAPI.logout = function () {
+            var req = {
+                method: 'GET',
+                url: '/logout',
+                
+            };
+            return $http(req);
+        }
         ergastAPI.login = function (userObj) {
             var req = {
                 method: 'POST',
@@ -166,11 +180,13 @@ app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope'
 
         $stateProvider.state('products', {
             url: '/products',
+             //cache:false,
             templateUrl: '/partials/products.html',
             controller: 'getBytesProductsSamsung'
         });
         $stateProvider.state('details', {
             url: '/details/:id',
+           //  cache:false,
             templateUrl: '/partials/single-product.html',
             controller: 'getDetails'
         });
@@ -194,6 +210,7 @@ app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope'
         });
         $stateProvider.state('home', {
             url: '/home',
+
             templateUrl: '/partials/home.html',
 
         });
@@ -203,6 +220,13 @@ app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope'
             controller: "logOut"
 
         });
-        $urlRouterProvider.otherwise('home');
+        $stateProvider.state('isAuthenticated', {
+            url: '/',
+            cache:false,
+            controller: "Authentication"
+
+
+        });
+        $urlRouterProvider.otherwise('isAuthenticated');
 
     });
