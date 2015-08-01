@@ -18,8 +18,8 @@ var db = require('monk')('umer:1234@ds061318.mongolab.com:61318/dropped');
 //Requiring the crawler scripts
 
 var bytes= require('./bytes.js');
-var homeshopping = require('./home-shopping.js')
-var daraz = require('./home-shopping.js')
+//var homeshopping = require('./home-shopping.js')
+var daraz = require('./daraz.js')
 
 //bytes.crawlAndStore();
 //homeshopping.crawlAndStore();
@@ -46,13 +46,20 @@ function findById(id, fn) {
     var collection = db.get('loginUsers');
     collection.findOne({_id: id}, {}, function (e, docs) {
         console.log("now in id", docs);
+        
+
         if (docs) {
+            RecieveId(docs.username);
             return fn(null, docs);
         }
         else {
             return fn(null, null);
         }
     });
+}
+var MatchUser;
+function RecieveId(UserName){
+    MatchUser=UserName;
 }
 
 var app = express();
@@ -114,7 +121,7 @@ passport.use(new LocalStrategy(
         });
     }
 ));
-
+var i=1;
 app.use(express.static(__dirname + '/dropped/www'));
 
 
@@ -132,6 +139,41 @@ app.get('/login', function (req, res) {
 
 app.get('/loginFailure', function (req, res) {
     res.send({error: true})
+});
+
+app.post('/watchProduct',function(req,res){
+
+var collection = db.get(MatchUser+"_Products_Collection");
+
+ collection.insert(req.body, function (err, doc) {
+                       
+                        if (err) {
+                            // If it failed, return error
+                            res.send(false);
+                        }
+                        else {
+                            res.send(true);
+                        }
+                    });
+
+
+});
+app.post('/removeProduct',function(req,res){
+
+var collection = db.get(MatchUser+"_Products_Collection");
+
+ collection.remove(req.body, function (err, doc) {
+                       
+                        if (err) {
+                            // If it failed, return error
+                            res.send(false);
+                        }
+                        else {
+                            res.send(true);
+                        }
+                    });
+
+
 });
 
 app.post('/register', function (req, res) {
@@ -186,8 +228,22 @@ function fetchProductsFromDB(collectionName, res) {
             return null;
         }
     });
+}
+function fetchWatchProductsFromDB(collectionName, res) {
+    var collect = db.get(collectionName);
+    collect.find({}, {}, function (e, docs) {
+        //console.log(collectionName,docs);
+        if (docs) {
+            console.log("Ye watching ka docs hai",docs);
+            sendData(res, docs);
+        }
+        else {
+            return null;
+        }
+    });
 
 }
+
 function findProduct(res, ind, collectionName) {
     var collect = db.get(collectionName);
     collect.findOne({_id: ind}, {}, function (e, docs) {
@@ -220,6 +276,13 @@ app.get('/getBytesSamsung', function (req, res) {
     //console.log("checking object",obj);
 });
 
+
+app.get('/getWatchProducts', function (req, res) {
+     fetchWatchProductsFromDB(MatchUser+"_Products_Collection", res);
+    //console.log("checking object",obj);
+});
+
+
 app.get('/getBytesSamsung/*', function (req, res) {
     var abc = req.params[0];
 
@@ -230,7 +293,16 @@ app.get('/getBytesSamsung/*', function (req, res) {
         res.send({error: true})
     }
 });
+app.get('/getWatchProducts/*', function (req, res) {
+    var abc = req.params[0];
 
+    if (abc) {
+        var obj = findProduct(res, req.params[0], MatchUser+"_Products_Collection");
+    }
+    else {
+        res.send({error: true})
+    }
+});
 app.listen(port);
 
 function sendData(res, obj) {

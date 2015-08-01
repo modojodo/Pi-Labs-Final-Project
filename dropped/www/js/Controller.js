@@ -76,14 +76,29 @@ app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope'
 
     });
 
-}]).controller('getDetails', ['$scope', 'myService', '$routeParams', '$stateParams', '$ionicHistory', function ($scope, myService, $routeParams, $stateParams, $ionicHistory) {
+}]).controller('getDetails', ['$scope', 'myService', '$routeParams', '$stateParams', '$ionicHistory', '$location',function ($scope, myService, $routeParams, $stateParams, $ionicHistory,$location
+    ) {
     $scope.id = $stateParams.id;
     $scope.loader= false;
     console.log($stateParams);
-    $scope.products;
     $scope.myGoBack = function () {
         $ionicHistory.goBack();
     };
+
+    $scope.SendDetails = function(Product){
+        console.log(Product);
+        
+        myService.watchProduct(Product).success(function (res) {
+            if(res==true){
+                alert("Your Product add for a watch !");
+                $location.path("products");
+            }
+
+    });
+
+    };
+
+   
     myService.getBytesSamsungWithId($scope.id).success(function (res) {
         $scope.product = res;
         $scope.loader=true;
@@ -117,7 +132,52 @@ myService.logout().success(function (res) {
             
 
     });
+}]).controller('WatchShow', ['$scope', 'myService','$ionicHistory', function ($scope, myService,$ionicHistory) {
+    $scope.products = [];
+    $scope.loader=false;
+     $scope.myGoBack = function () {
+        $ionicHistory.goBack();
+    };
+    myService.watchShow().success(function (res) {
+        $scope.products = res;
+        $scope.loader=true;
+
+        console.log($scope.products);
+
+    });
+
+}]).controller('getWatchDetails', ['$scope', 'myService', '$routeParams', '$stateParams', '$ionicHistory', '$location',function ($scope, myService, $routeParams, $stateParams, $ionicHistory,$location
+    ) {
+    $scope.id = $stateParams.id;
+    $scope.loader= false;
+    console.log($stateParams);
+    $scope.myGoBack = function () {
+        $ionicHistory.goBack();
+    };
+    $scope.RemoveWatch = function(Product){
+
+           console.log(Product);
+        
+        myService.removeProduct(Product).success(function (res) {
+            if(res==true){
+                alert("Your Product Removed from watch !");
+                $location.path("products");
+            }
+
+    });
+    }
+      
+    myService.getSingleWatched($scope.id).success(function (res) {
+        $scope.product = res;
+        $scope.loader=true;
+
+        console.log($scope.product);
+
+
+    });
+
 }])
+
     .factory('myService', function ($http) {
 
         var ergastAPI = {};
@@ -128,6 +188,26 @@ myService.logout().success(function (res) {
                 
             };
             return $http(req);
+        }
+        ergastAPI.watchProduct = function (userObj) {
+            var req = {
+                method: 'POST',
+                url: '/watchProduct',
+                data: userObj
+            };
+            return $http(req);
+
+
+        }
+        ergastAPI.removeProduct = function (userObj) {
+            var req = {
+                method: 'POST',
+                url: '/removeProduct',
+                data: userObj
+            };
+            return $http(req);
+
+
         }
          ergastAPI.logout = function () {
             var req = {
@@ -158,6 +238,18 @@ myService.logout().success(function (res) {
         ergastAPI.getBytesSamsung = function () {
             return getProducsServer("/getBytesSamsung");
         }
+        ergastAPI.watchShow = function () {
+            return getWatchProductsFromServer("/getWatchProducts");
+        }
+        
+        ergastAPI.getSingleWatched = function (id) {
+            //console.log("yeh id hai!",id);
+            return $http({
+                method: 'GET',
+                url: '/getWatchProducts/' + id
+            });
+        }
+
         ergastAPI.getBytesSamsungWithId = function (id) {
             //console.log("yeh id hai!",id);
             return $http({
@@ -166,7 +258,13 @@ myService.logout().success(function (res) {
             });
         }
 
+        function getWatchProductsFromServer(URL) {
 
+            return $http({
+                method: 'GET',
+                url: URL
+            });
+        }
         function getProducsServer(URL) {
             return $http({
                 method: 'GET',
@@ -184,11 +282,24 @@ myService.logout().success(function (res) {
             templateUrl: '/partials/products.html',
             controller: 'getBytesProductsSamsung'
         });
+
+        $stateProvider.state('watchproducts', {
+            url: '/watchproducts',
+             cache:false,
+            templateUrl: '/partials/Watch_Products.html',
+            controller: 'WatchShow'
+        });
         $stateProvider.state('details', {
             url: '/details/:id',
            //  cache:false,
             templateUrl: '/partials/single-product.html',
             controller: 'getDetails'
+        });
+        $stateProvider.state('watchdetails', {
+            url: '/watchdetails/:id',
+           //  cache:false,
+            templateUrl: '/partials/Single_Watch_Product.html',
+            controller: 'getWatchDetails'
         });
         $stateProvider.state('login', {
             url: '/login',

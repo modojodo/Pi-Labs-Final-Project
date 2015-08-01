@@ -1,15 +1,17 @@
-<ion-pane class="back-color" ng-controller="Authentication">
+<ion-pane class="back-color" >
 	<input value="Products" type="text" name="page"></input>
 	<ion-header-bar class="bar-stable"  >
-		<h1 class="title">Available Products</h1>
-		<a ng-href="/#/watchproducts"><button  class="button button-positive" >Watched Product</button></a>
+	<button class="button-clear" ng-click="myGoBack()">
+			<i class="button icon-left ion-chevron-left button-clear button-dark"></i>
+		</button>
+		<h1 class="title">Your Watch Products</h1>
 		<button ng-controller="logOut" class="button button-positive" ng-click="logout()">Logout</button>
 	</ion-header-bar>
 	<ion-spinner class="loader" ng-hide="loader"></ion-spinner>
 	<ion-content>
 		<div class="list">
 			<div ng-repeat="product in products" ng-show="loader">
-				<a class="item item-avatar" ng-href='/#/details/{{product._id}}'>
+				<a class="item item-avatar" ng-href='/#/watchdetails/{{product._id}}'>
 					<img class="product-thumbnail" src={{product.productImg}}>
 
 					<div>

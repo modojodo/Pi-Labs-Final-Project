@@ -12,7 +12,7 @@ exports.crawlAndStore = function () {
 
 //    Requiring the modules
 
-var app = express();
+
 var request = require('request');
 var cheerio = require('cheerio');
 var db = require('monk')('umer:1234@ds061318.mongolab.com:61318/dropped');
@@ -32,12 +32,7 @@ var qmobile = "qmobilecollection";
 var htc = "htccollection";
 
 
-app.use(function (req, res, next) {
-    req.db = db;
-    next();
-})
 
-app.use(express.static(__dirname + '/public'));
 
 
 function getProducts(brand_id, storage) {
