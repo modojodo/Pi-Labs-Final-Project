@@ -1,11 +1,12 @@
 var exports = module.exports = {};
 
-
 exports.crawlAndStore = function () {
+
     getProducts(samungPhone, samsung, sam);
     getProducts(applePhone, apple, appl);
     getProducts(qmobilePhone, qmobile, qmob);
     getProducts(htcPhone, htc, ht);
+
 
 }
 
@@ -38,17 +39,17 @@ var ht = "HTC";
 var page;
 
 
-function getProducts(brand_id, storage, match) {
+function getProducts(brand_id, storage, match ) {
     var page = 1;
     // var obj;
-
+  
     var collection = db.get(storage);
     collection.remove({});
 
     var clear = setInterval(function () {
         request("http://www.bytes.pk/" + brand_id + "/?sort=newest&page=" + page, function (error, response, html) {
             if (error) {
-                console.log('error');
+                console.log('Byteserror');
             } else if (!error && response.statusCode == 200) {
                 console.log("request executed");
 
@@ -92,7 +93,9 @@ function getProducts(brand_id, storage, match) {
                         price = arr[0]
 
                     }
+
                     console.log(price)
+
                     // console.log(imgLink);
                     //console.log(link);
                     // storage.push(obj);
@@ -100,6 +103,7 @@ function getProducts(brand_id, storage, match) {
                     // console.log("\n")
                     //console.log(price);
                     if (imgLink != null) {
+
                         collection.insert({
                             productName: name,
                             productPrice: price,
@@ -121,5 +125,4 @@ function getProducts(brand_id, storage, match) {
 
         });
     }, 10000);
-    return 0;
 }

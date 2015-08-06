@@ -1,9 +1,7 @@
-/**
- * Created by Umer on 7/22/2015.
- */
-var exports = module.exports = {};
+
 
 exports.crawlAndStore = function () {
+
     getProducts(SAMSUNG_ID, samsung);
     getProducts(APPLE_ID, apple);
     getProducts(HTC_ID, qmobile);
@@ -26,10 +24,10 @@ var QMOBILE_ID = 269;
 
 //Collection names
 
-var samsung = "samsungcollection";
-var apple = "applecollection";
-var qmobile = "qmobilecollection";
-var htc = "htccollection";
+var samsung = "Homeshoppingsamsungcollection";
+var apple = "Homeshoppingapplecollection";
+var qmobile = "Homeshoppingqmobilecollection";
+var htc = "Homeshoppinghtccollection";
 
 
 
@@ -42,9 +40,9 @@ function getProducts(brand_id, storage) {
     collection.remove({});
 
     var clear = setInterval(function () {
-        request("http://homeshopping.pk/categories/Mobile-Phones-Price-Pakistan/?page=" + page.toString() + "&sort=newest&brandid=" + brand_id + "&AjaxRequest=1", function (error, response, html) {
+        request("http://homeshopping.pk/categories/Mobile-Phones-Price-Pakistan/?page="+page.toString()+"&sort=newest&brandid="+brand_id+"&AjaxRequest=1", function (error, response, html) {
             if (error) {
-                console.log('error');
+                console.log('Homeerror');
             } else if (!error && response.statusCode == 200) {
                 console.log("request executed");
 
@@ -64,7 +62,19 @@ function getProducts(brand_id, storage) {
                         imgLink = elem.find('.ProductImage img').attr('src');
                         name = elem.find('.ProductDetails a').text();
                         price = elem.find('.ProductPriceRating em').text();
+                        arr = price.split(" ");
+                        var arr1=[];
+                         if (price.search(" ") > 1) {
+                        price = arr[2];
+                        arr1=price.split("%");
+                        price=arr1[1];
 
+                    }
+                    else {
+                        price = arr[0]
+
+                    }
+                  //  console.log(price);
                         //var obj = {
                         //    productName: name,
                         //    productPrice: price,
@@ -72,6 +82,10 @@ function getProducts(brand_id, storage) {
                         //    productLink: link
                         //};
                         //storage.push(obj);
+                        
+                           
+                            
+                        
                         collection.insert({
                             productName: name,
                             productPrice: price,
@@ -96,7 +110,7 @@ function getProducts(brand_id, storage) {
     }, 10000);
 }
 
-app.listen(port);
+
 
 
 

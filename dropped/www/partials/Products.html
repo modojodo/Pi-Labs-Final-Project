@@ -1,16 +1,19 @@
-<ion-pane class="back-color" ng-controller="Authentication">
+
+	  <ion-side-menus ng-controller="ContentController">
+    <ion-side-menu-content>
+  <ion-pane class="back-color">
 	<input value="Products" type="text" name="page"></input>
 	<ion-header-bar class="bar-stable"  >
+			   <button menu-toggle="left" class="button button-icon icon ion-navicon-round" ng-click="toggleLeft"> </button>
 		<h1 class="title">Available Products</h1>
-		<a ng-href="/#/watchproducts"><button  class="button button-positive" >Watched Product</button></a>
-		<button ng-controller="logOut" class="button button-positive" ng-click="logout()">Logout</button>
+
 	</ion-header-bar>
 	<ion-spinner class="loader" ng-hide="loader"></ion-spinner>
 	<ion-content>
 		<div class="list">
 			<div ng-repeat="product in products" ng-show="loader">
 				<a class="item item-avatar" ng-href='/#/details/{{product._id}}'>
-					<img class="product-thumbnail" src={{product.productImg}}>
+					<img class="product-thumbnail" ng-src={{product.productImg}}>
 
 					<div>
 						<h2>{{product.productName}}</h2>
@@ -26,3 +29,49 @@
 
 
 </ion-pane>
+    
+    </ion-side-menu-content>
+    <ion-side-menu side="left">
+    <ion-list ng-controller="getProductsController1">
+    		<a ng-href="/#/watchproducts"  style="text-decoration: none"> <ion-item nav-clear menu-toggle>  <h3>Watched Product</h3></ion-item></a>
+
+    		
+    		   <ion-item nav-clear   ng-click="showsub()">
+    		  <h3> <a>Stores<a></h3>
+    		   <ion-list ng-show="submenu">
+                  
+                     <ion-item nav-clear   ng-click="showsubhome()">
+    		 Homeshopping.pk
+    		   <ion-list ng-show="submenuhome">
+                <p ng-click="HomeshoppingSamsung()"><ion-item nav-clear menu-toggle>Samsung</ion-item></p>
+                  <p ng-click="HomeshoppingQmobile()"><ion-item nav-clear menu-toggle>Qmobile</ion-item></p>
+                  <p ng-click="HomeshoppingApple()"><ion-item nav-clear menu-toggle>Apple</ion-item></p>
+                  <p ng-click="HomeshoppingHTC()"><ion-item nav-clear menu-toggle>HTC</ion-item></p>
+                </ion-list>
+                </ion-item>
+                   	
+                     <ion-item nav-clear   ng-click="showsubdaraz()">
+    						 Daraz.pk
+    		   <ion-list ng-show="submenudaraz">
+                        <p ng-click="DarazSamsung()">    <ion-item nav-clear menu-toggle>Samsung</ion-item></p>
+                  <p ng-click="DarazQmobile()">  <ion-item nav-clear menu-toggle>Qmobile</ion-item></p>
+                  <p ng-click="DarazApple()">  <ion-item nav-clear menu-toggle>Apple</ion-item></p>
+                  <p ng-click="DarazHTC()">   <ion-item nav-clear menu-toggle>HTC</ion-item></p>
+                </ion-list>
+                </ion-item>
+                  
+                     <ion-item nav-clear   ng-click="showsubbytes()">
+    		 Bytes.pk
+    		   		<ion-list ng-show="submenubytes">
+                 <p ng-click="BytesSamsung()">    <ion-item nav-clear menu-toggle>Samsung</ion-item></p>
+                  <p ng-click="BytesQmobile()">  <ion-item nav-clear menu-toggle>Qmobile</ion-item></p>
+                  <p ng-click="BytesApple()">  <ion-item nav-clear menu-toggle>Apple</ion-item></p>
+                  <p ng-click="BytesHTC()">   <ion-item nav-clear menu-toggle>HTC</ion-item></p>
+                </ion-list>
+            </ion-item>
+                </ion-list>
+                </ion-item>
+                  
+	 </ion-list>
+    </ion-side-menu>
+  </ion-side-menus>

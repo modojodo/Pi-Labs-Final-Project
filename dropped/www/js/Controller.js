@@ -1,4 +1,5 @@
 
+var objects={};
 var app = angular.module('dropped', ['ionic', 'ngRoute','ngMessages']);
 app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope', function ($scope, myService, $location, $rootScope, $state) {
     // $rootScope.location = $location.path();
@@ -58,40 +59,413 @@ app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope'
                 }
                 else {
                     //   $rootScope.loggedIn=true;
-                    $location.path('products')
+                    $location.path('watchproducts')
 
                 }
             });
         }
     }
-
-}]).controller('getBytesProductsSamsung', ['$scope', 'myService', function ($scope, myService) {
+   // Registers a device for push notifications and stores its token
+     // Handles incoming device tokens
+  
+  
+  
+}]).controller('getProductsController', ['$scope', 'myService','$location', function ($scope, myService,$location) {
     $scope.products = [];
     $scope.loader=false;
-    myService.getBytesSamsung().success(function (res) {
+    var obj={};
+    $scope.BytesSamsung=function()
+    {
+        
+        var obj={name : "Bytessamsungcollection"};
+    myService.getProducts(obj).success(function (res) {
+        objects=res;
+        $scope.products = res;
+        
+        console.log("I am Called")
+        console.log($scope.products);
+        $location.path('products');
+
+    });
+    console.log("Yaha");
+
+}
+
+    $scope.BytesQmobile=function()
+    {
+        var obj={name : "Bytesqmobilecollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
         $scope.products = res;
         $scope.loader=true;
+        $location.path('products')
 
         console.log($scope.products);
 
     });
+}
+    $scope.BytesApple=function(){
+        var obj={name : "Bytesapplecollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
 
-}]).controller('getDetails', ['$scope', 'myService', '$routeParams', '$stateParams', '$ionicHistory', '$location',function ($scope, myService, $routeParams, $stateParams, $ionicHistory,$location
+    });
+}
+    $scope.BytesHTC=function(){
+        var obj={name : "Byteshtccollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+
+    });
+}
+    $scope.DarazSamsung=function(){
+        var obj={name : "Darazsamsungcollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+
+    });
+}
+   
+  $scope.DarazQmobile=function(){
+        var obj={name : "Darazqmobilecollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+
+    });
+}
+    $scope.DarazApple=function(){
+        var obj={name : "Darazapplecollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+
+    });
+}
+    $scope.DarazHTC=function(){
+        var obj={name : "Darazhtccollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+
+    });
+}
+   $scope.HomeshoppingSamsung=function(){
+        var obj={name : "Homeshoppingsamsungcollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+    $location.path('products')
+        console.log($scope.products);
+
+    });
+    console.log("Show",objects)
+$scope.products=objects;
+$scope.loader=true;
+}
+   
+  $scope.HomeshoppingQmobile=function(){
+        var obj={name : "Homeshoppingqmobilecollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+
+    });
+    console.log("Show",objects)
+$scope.products=objects;
+$scope.loader=true;
+}
+    $scope.HomeshoppingApple=function(){
+        var obj={name : "Homeshoppingapplecollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+
+    });
+    console.log("Show",objects)
+$scope.products=objects;
+$scope.loader=true;
+}
+    $scope.HomeshoppingHTC=function(){
+        var obj={name : "Homeshoppinghtccollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+
+        console.log($scope.products);
+        $state.go($state.current, {}, {reload: true});
+
+    });
+
+}
+
+
+
+console.log("Show",objects)
+$scope.products=objects;
+$scope.loader=true;
+}]).controller('ContentController', ['$scope','$ionicSideMenuDelegate', function ($scope,$ionicSideMenuDelegate ) {
+      $scope.submenu=false;
+   $scope.submenuhome=false;
+    $scope.submenudaraz=false;
+    $scope.submenubytes=false;
+$scope.toggleLeft = function() {
+      console.log("Button called")
+    $ionicSideMenuDelegate.toggleLeft();
+  
+   $scope.submenu=false;
+   $scope.submenuhome=false;
+    $scope.submenudaraz=false;
+    $scope.submenubytes=false;
+  };
+
+   $scope.showsub= function(){
+    $scope.submenu=true;
+    
+  }
+  $scope.showsubhome = function(){
+    $scope.submenu=true;
+    $scope.submenuhome=true;
+    $scope.submenudaraz=false;
+    $scope.submenubytes=false;
+  }
+  $scope.showsubdaraz = function(){
+     $scope.submenu=true;
+    $scope.submenudaraz=true;
+    $scope.submenubytes=false;
+      $scope.submenuhome=false;
+  }
+   
+   $scope.showsubbytes = function(){
+     $scope.submenu=true;
+    $scope.submenubytes=true;
+    $scope.submenudaraz=false;
+     $scope.submenuhome=false;
+  }
+   
+   
+   
+   
+
+}]).controller('getProductsController1', ['$scope', 'myService','$location','$state', function ($scope, myService,$location,$state) {
+    $scope.products = [];
+    $scope.loader=false;
+    var obj={};
+    $scope.BytesSamsung=function()
+    {
+        
+        var obj={name : "Bytessamsungcollection"};
+    myService.getProducts(obj).success(function (res) {
+        objects=res;
+        $scope.products = res;
+        
+        console.log("I am Called")
+        console.log($scope.products);
+        $location.path('products');
+        $state.go($state.current, {}, {reload: true});
+        $location.path('products');
+
+    });
+    console.log("Yaha");
+
+}
+
+    $scope.BytesQmobile=function()
+    {
+        var obj={name : "Bytesqmobilecollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+        $location.path('products')
+
+        console.log($scope.products);
+        $state.go($state.current, {}, {reload: true});
+
+    });
+}
+    $scope.BytesApple=function(){
+        var obj={name : "Bytesapplecollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+        $state.go($state.current, {}, {reload: true});
+
+    });
+}
+    $scope.BytesHTC=function(){
+        var obj={name : "Byteshtccollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+        $state.go($state.current, {}, {reload: true});
+
+    });
+}
+    $scope.DarazSamsung=function(){
+        var obj={name : "Darazsamsungcollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+        $state.go($state.current, {}, {reload: true});
+
+    });
+}
+   
+  $scope.DarazQmobile=function(){
+        var obj={name : "Darazqmobilecollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+
+        $state.go($state.current, {}, {reload: true});
+    });
+}
+    $scope.DarazApple=function(){
+        var obj={name : "Darazapplecollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+        $state.go($state.current, {}, {reload: true});
+
+    });
+}
+    $scope.DarazHTC=function(){
+        var obj={name : "Darazhtccollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+        $state.go($state.current, {}, {reload: true});
+
+    });
+}
+   $scope.HomeshoppingSamsung=function(){
+        var obj={name : "Homeshoppingsamsungcollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+    $location.path('products')
+        console.log($scope.products);
+        $state.go($state.current, {}, {reload: true});
+
+    });
+    console.log("Show",objects)
+$scope.products=objects;
+$scope.loader=true;
+}
+   
+  $scope.HomeshoppingQmobile=function(){
+        var obj={name : "Homeshoppingqmobilecollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+        $state.go($state.current, {}, {reload: true});
+
+    });
+    console.log("Show",objects)
+$scope.products=objects;
+$scope.loader=true;
+}
+    $scope.HomeshoppingApple=function(){
+        var obj={name : "Homeshoppingapplecollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+        $state.go($state.current, {}, {reload: true});
+
+    });
+    console.log("Show",objects)
+$scope.products=objects;
+$scope.loader=true;
+}
+    $scope.HomeshoppingHTC=function(){
+        var obj={name : "Homeshoppinghtccollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+        $state.go($state.current, {}, {reload: true});
+
+    });
+
+}
+
+
+
+console.log("Show",objects)
+$scope.products=objects;
+$scope.loader=true;
+}]).controller('getDetails', ['$scope', 'myService', '$routeParams', '$stateParams',  '$location',function ($scope, myService, $routeParams, $stateParams,$location
     ) {
     $scope.id = $stateParams.id;
     $scope.loader= false;
     console.log($stateParams);
-    $scope.myGoBack = function () {
-        $ionicHistory.goBack();
-    };
+   
 
     $scope.SendDetails = function(Product){
         console.log(Product);
+
         
         myService.watchProduct(Product).success(function (res) {
             if(res==true){
                 alert("Your Product add for a watch !");
-                $location.path("products");
+                $location.path("watchproducts");
             }
 
     });
@@ -99,7 +473,7 @@ app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope'
     };
 
    
-    myService.getBytesSamsungWithId($scope.id).success(function (res) {
+    myService.getProductsWithId($scope.id).success(function (res) {
         $scope.product = res;
         $scope.loader=true;
 
@@ -124,7 +498,7 @@ myService.logout().success(function (res) {
   myService.isAuthenticated().success(function (res) {
     console.log("Authentication Called");
         if(res==true){
-             $location.path('products')
+             $location.path('watchproducts')
         }
         else{
              $location.path('home')
@@ -132,41 +506,24 @@ myService.logout().success(function (res) {
             
 
     });
-}]).controller('WatchShow', ['$scope', 'myService','$ionicHistory', function ($scope, myService,$ionicHistory) {
+}]).controller('WatchShow', ['$scope', 'myService', function ($scope, myService) {
     $scope.products = [];
     $scope.loader=false;
-     $scope.myGoBack = function () {
-        $ionicHistory.goBack();
-    };
     myService.watchShow().success(function (res) {
         $scope.products = res;
         $scope.loader=true;
-
+  
         console.log($scope.products);
 
     });
 
-}]).controller('getWatchDetails', ['$scope', 'myService', '$routeParams', '$stateParams', '$ionicHistory', '$location',function ($scope, myService, $routeParams, $stateParams, $ionicHistory,$location
+}]).controller('getWatchDetails', ['$scope', 'myService', '$stateParams', '$state',function ($scope, myService, $stateParams,$state
     ) {
     $scope.id = $stateParams.id;
     $scope.loader= false;
     console.log($stateParams);
-    $scope.myGoBack = function () {
-        $ionicHistory.goBack();
-    };
-    $scope.RemoveWatch = function(Product){
-
-           console.log(Product);
-        
-        myService.removeProduct(Product).success(function (res) {
-            if(res==true){
-                alert("Your Product Removed from watch !");
-                $location.path("products");
-            }
-
-    });
-    }
-      
+   
+         
     myService.getSingleWatched($scope.id).success(function (res) {
         $scope.product = res;
         $scope.loader=true;
@@ -199,16 +556,7 @@ myService.logout().success(function (res) {
 
 
         }
-        ergastAPI.removeProduct = function (userObj) {
-            var req = {
-                method: 'POST',
-                url: '/removeProduct',
-                data: userObj
-            };
-            return $http(req);
-
-
-        }
+       
          ergastAPI.logout = function () {
             var req = {
                 method: 'GET',
@@ -235,13 +583,12 @@ myService.logout().success(function (res) {
 
         }
 
-        ergastAPI.getBytesSamsung = function () {
-            return getProducsServer("/getBytesSamsung");
+        ergastAPI.getProducts= function (obj) {
+            return getProducsServer("/getProducts",obj);
         }
-        ergastAPI.watchShow = function () {
-            return getWatchProductsFromServer("/getWatchProducts");
+         ergastAPI.watchShow= function () {
+            return getWatchProductsFromServer('/getWatchProducts');
         }
-        
         ergastAPI.getSingleWatched = function (id) {
             //console.log("yeh id hai!",id);
             return $http({
@@ -250,11 +597,11 @@ myService.logout().success(function (res) {
             });
         }
 
-        ergastAPI.getBytesSamsungWithId = function (id) {
+        ergastAPI.getProductsWithId = function (id) {
             //console.log("yeh id hai!",id);
             return $http({
                 method: 'GET',
-                url: '/getBytesSamsung/' + id
+                url: '/getProducts/' + id
             });
         }
 
@@ -265,10 +612,11 @@ myService.logout().success(function (res) {
                 url: URL
             });
         }
-        function getProducsServer(URL) {
+        function getProducsServer(URL,UserObj) {
             return $http({
-                method: 'GET',
-                url: URL
+                method: 'POST',
+                url: URL,
+                data : UserObj
             });
         }
 
@@ -278,9 +626,9 @@ myService.logout().success(function (res) {
 
         $stateProvider.state('products', {
             url: '/products',
-             //cache:false,
+             cache:false,
             templateUrl: '/partials/products.html',
-            controller: 'getBytesProductsSamsung'
+            controller: 'getProductsController'
         });
 
         $stateProvider.state('watchproducts', {
@@ -291,13 +639,13 @@ myService.logout().success(function (res) {
         });
         $stateProvider.state('details', {
             url: '/details/:id',
-           //  cache:false,
+             cache:false,
             templateUrl: '/partials/single-product.html',
             controller: 'getDetails'
         });
         $stateProvider.state('watchdetails', {
             url: '/watchdetails/:id',
-           //  cache:false,
+             cache:false,
             templateUrl: '/partials/Single_Watch_Product.html',
             controller: 'getWatchDetails'
         });
@@ -331,10 +679,30 @@ myService.logout().success(function (res) {
             controller: "logOut"
 
         });
+          $stateProvider.state('stores', {
+            url: '/stores',
+            templateUrl: '/partials/store-categories.html',
+          
+
+        });
         $stateProvider.state('isAuthenticated', {
             url: '/',
             cache:false,
             controller: "Authentication"
+
+
+        });
+        $stateProvider.state('ContentController', {
+            url: '/',
+            cache:false,
+            controller: "ContentController"
+
+
+        });
+         $stateProvider.state('myhome', {
+            url: '/myhome',
+            cache:false,
+         templateUrl: '/partials/myhome.html'
 
 
         });
