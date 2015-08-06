@@ -11,7 +11,7 @@ var session = require('express-session');
 var Stores=["Bytessamsungcollection","Bytesapplecollection","Bytesqmobilecollection","Byteshtccollection","Homeshoppingsamsungcollection","Homeshoppingapplecollection","Homeshoppingqmobilecollection","Homeshoppinghtccollection","Darazsamsungcollection","Darazapplecollection","Darazqmobilecollection"]
 var db = require('monk')('umer:1234@ds061318.mongolab.com:61318/dropped');
 var counter=0;
-var async = require("async");
+
 
 //Requiring the crawler scripts
 
