@@ -1,4 +1,4 @@
-
+var exports = module.exports = {};
 
 exports.crawlAndStore = function () {
 

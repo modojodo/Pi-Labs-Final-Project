@@ -102,7 +102,7 @@ function getProducts(brand_id, storage, match ) {
 
                     // console.log("\n")
                     //console.log(price);
-                    if (imgLink != null) {
+                    if (imgLink != null && link !=null) {
 
                         collection.insert({
                             productName: name,

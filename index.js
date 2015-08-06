@@ -18,7 +18,6 @@ var counter=0;
 var bytes= require('./bytes.js');
 var homeshopping = require('./home-shopping.js')
 var daraz = require('./daraz.js')
-fetchData();
 setInterval(fetchData(),43200000);
 if(counter>0){
 
