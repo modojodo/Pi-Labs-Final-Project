@@ -2,10 +2,15 @@ var exports = module.exports = {};
 
 exports.crawlAndStore = function () {
 
-    getProducts(samungPhone, samsung, sam);
-    getProducts(applePhone, apple, appl);
-    getProducts(qmobilePhone, qmobile, qmob);
-    getProducts(htcPhone, htc, ht);
+    getProducts(samungPhone, samsung);
+    getProducts(applePhone, apple);
+    getProducts(qmobilePhone, qmobile);
+    getProducts(htcPhone, htc);
+    getProducts(lgPhone, lg);
+    getProducts(microsoftPhone, microsoft);
+    getProducts(motorolaPhone, motorola);
+    getProducts(nokiaPhone, nokia);
+    getProducts(sonyPhone, sony);
 
 
 }
@@ -21,6 +26,13 @@ var samsung = "Bytessamsungcollection";
 var apple = "Bytesapplecollection";
 var qmobile = "Bytesqmobilecollection";
 var htc = "Byteshtccollection";
+var lg = "Byteslgcollection";
+var  microsoft= "Bytesmicrosoftcollection";
+var  motorola= "Bytesmotorolacollection";
+var  nokia= "Bytesnokiacollection";
+var  sony= "Bytessonycollection";
+
+
 
 
 var samsungStorage = [];
@@ -28,18 +40,27 @@ var appleStorage = [];
 var htcStorage = [];
 var qmobileStorage = [];
 
+
+
 var samungPhone = "samsung";
 var applePhone = "apple";
 var qmobilePhone = "qmobile";
 var htcPhone = "htc"
-var sam = "Samsung"
-var appl = "Apple"
-var qmob = "QMobile"
-var ht = "HTC";
+var lgPhone = "lg";
+var microsoftPhone = "microsoft";
+var motorolaPhone = "motorola";
+var nokiaPhone = "nokia"
+var sonyPhone = "sony";
+
+
+
+
+
+
 var page;
 
 
-function getProducts(brand_id, storage, match ) {
+function getProducts(brand_id, storage) {
     var page = 1;
     // var obj;
   

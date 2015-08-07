@@ -6,6 +6,11 @@ exports.crawlAndStore = function () {
     getProducts(APPLE_ID, apple);
     getProducts(HTC_ID, qmobile);
     getProducts(QMOBILE_ID, htc);
+    getProducts(SONY_ID, sony);
+    getProducts(MICROSOFT_ID, microsoft);
+    getProducts(MOTOROLA_ID, motorolla);
+    getProducts(LG_ID, lg);
+    getProducts(NOKIA_ID, nokia);
 }
 
 //    Requiring the modules
@@ -21,6 +26,11 @@ var APPLE_ID = 227;
 var SAMSUNG_ID = 30;
 var HTC_ID = 29;
 var QMOBILE_ID = 269;
+var SONY_ID = 31;
+var MICROSOFT_ID =234;
+var MOTOROLA_ID = 224;
+var LG_ID = 124;
+var NOKIA_ID = 24;
 
 //Collection names
 
@@ -28,6 +38,11 @@ var samsung = "Homeshoppingsamsungcollection";
 var apple = "Homeshoppingapplecollection";
 var qmobile = "Homeshoppingqmobilecollection";
 var htc = "Homeshoppinghtccollection";
+var sony = "Homeshoppingsonycollection";
+var microsoft = "Homeshoppingmicrosoftcollection";
+var motorolla = "Homeshoppingmotorollacollection";
+var lg = "Homeshoppinglgcollection";
+var nokia = "Homeshoppingnokiacollection";
 
 
 

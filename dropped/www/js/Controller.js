@@ -1,4 +1,3 @@
-
 var objects={};
 var app = angular.module('dropped', ['ionic', 'ngRoute','ngMessages']);
 app.controller('registerUser', ['$scope', 'myService', '$location', '$rootScope', function ($scope, myService, $location, $rootScope, $state) {
@@ -126,6 +125,61 @@ $location.path('products')
 
     });
 }
+$scope.BytesLG=function(){
+        var obj={name : "Byteslgcollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+
+    });
+}
+$scope.BytesMICROSOFT=function(){
+        var obj={name : "Bytesmicrosoftcollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+
+    });
+}
+$scope.BytesMOTOROLA=function(){
+        var obj={name : "Bytesmotorolacollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+
+    });
+}
+$scope.BytesNOKIA=function(){
+        var obj={name : "Bytesnokiacollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+
+    });
+}
+$scope.BytesSONY=function(){
+        var obj={name : "Bytessonycollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+
+    });
+}
     $scope.DarazSamsung=function(){
         var obj={name : "Darazsamsungcollection"};
     myService.getProducts(obj).success(function (res) {
@@ -160,8 +214,8 @@ $location.path('products')
 
     });
 }
-    $scope.DarazHTC=function(){
-        var obj={name : "Darazhtccollection"};
+    $scope.DarazMICROSOFT=function(){
+        var obj={name : "Darazmicrosoftcollection"};
     myService.getProducts(obj).success(function (res) {
          objects=res;
         $scope.products = res;
@@ -171,6 +225,29 @@ $location.path('products')
 
     });
 }
+$scope.DarazNOKIA=function(){
+        var obj={name : "Daraznokiacollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+
+    });
+}
+$scope.DarazSONY=function(){
+        var obj={name : "Darazsonycollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+
+    });
+}
+
    $scope.HomeshoppingSamsung=function(){
         var obj={name : "Homeshoppingsamsungcollection"};
     myService.getProducts(obj).success(function (res) {
@@ -181,9 +258,7 @@ $location.path('products')
         console.log($scope.products);
 
     });
-    console.log("Show",objects)
-$scope.products=objects;
-$scope.loader=true;
+
 }
    
   $scope.HomeshoppingQmobile=function(){
@@ -196,9 +271,7 @@ $location.path('products')
         console.log($scope.products);
 
     });
-    console.log("Show",objects)
-$scope.products=objects;
-$scope.loader=true;
+
 }
     $scope.HomeshoppingApple=function(){
         var obj={name : "Homeshoppingapplecollection"};
@@ -210,12 +283,373 @@ $location.path('products')
         console.log($scope.products);
 
     });
-    console.log("Show",objects)
-$scope.products=objects;
-$scope.loader=true;
+
 }
     $scope.HomeshoppingHTC=function(){
         var obj={name : "Homeshoppinghtccollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+
+        console.log($scope.products);
+$location.path('products')
+
+    });
+
+}
+$scope.HomeshoppingSONY=function(){
+        var obj={name : "Homeshoppingsonycollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$location.path('products')
+        console.log($scope.products);
+
+    });
+
+}
+$scope.HomeshoppingMICROSOFT=function(){
+        var obj={name : "Homeshoppingmicrosoftcollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+
+        console.log($scope.products);
+       $location.path('products')
+
+    });
+
+}
+$scope.HomeshoppingMOTOROLA=function(){
+        var obj={name : "Homeshoppingmotorollacollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+
+        console.log($scope.products);
+    $location.path('products')
+
+    });
+
+}
+$scope.HomeshoppingLG=function(){
+        var obj={name : "Homeshoppinglgcollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+
+        console.log($scope.products);
+ $location.path('products')
+
+    });
+
+}
+$scope.HomeshoppingNOKIA=function(){
+        var obj={name : "Homeshoppingnokiacollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+
+        console.log($scope.products);
+$location.path('products')
+
+    });
+
+}
+
+
+
+console.log("Show",objects)
+$scope.products=objects;
+$scope.loader=true;
+}]).controller('getProductsController1', ['$scope', 'myService','$state', function ($scope, myService,$state) {
+    $scope.products = [];
+    $scope.loader=false;
+    var obj={};
+    $scope.BytesSamsung=function()
+    {
+        
+        var obj={name : "Bytessamsungcollection"};
+    myService.getProducts(obj).success(function (res) {
+        objects=res;
+        $scope.products = res;
+        
+        console.log("I am Called")
+        console.log($scope.products);
+       $state.go($state.current, {}, {reload: true});
+
+    });
+    console.log("Yaha");
+
+}
+
+    $scope.BytesQmobile=function()
+    {
+        var obj={name : "Bytesqmobilecollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+     $state.go($state.current, {}, {reload: true});
+
+        console.log($scope.products);
+
+    });
+}
+    $scope.BytesApple=function(){
+        var obj={name : "Bytesapplecollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$state.go($state.current, {}, {reload: true});
+        console.log($scope.products);
+
+    });
+}
+    $scope.BytesHTC=function(){
+        var obj={name : "Byteshtccollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$state.go($state.current, {}, {reload: true});
+        console.log($scope.products);
+
+    });
+}
+$scope.BytesLG=function(){
+        var obj={name : "Byteslgcollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$state.go($state.current, {}, {reload: true});
+        console.log($scope.products);
+
+    });
+}
+$scope.BytesMICROSOFT=function(){
+        var obj={name : "Bytesmicrosoftcollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$state.go($state.current, {}, {reload: true});
+        console.log($scope.products);
+
+    });
+}
+$scope.BytesMOTOROLA=function(){
+        var obj={name : "Bytesmotorolacollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$state.go($state.current, {}, {reload: true});
+        console.log($scope.products);
+
+    });
+}
+$scope.BytesNOKIA=function(){
+        var obj={name : "Bytesnokiacollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$state.go($state.current, {}, {reload: true});
+        console.log($scope.products);
+
+    });
+}
+$scope.BytesSONY=function(){
+        var obj={name : "Bytessonycollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$state.go($state.current, {}, {reload: true});
+        console.log($scope.products);
+
+    });
+}
+    $scope.DarazSamsung=function(){
+        var obj={name : "Darazsamsungcollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$state.go($state.current, {}, {reload: true});
+        console.log($scope.products);
+
+    });
+}
+   
+  $scope.DarazQmobile=function(){
+        var obj={name : "Darazqmobilecollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$state.go($state.current, {}, {reload: true});
+        console.log($scope.products);
+
+    });
+}
+    $scope.DarazApple=function(){
+        var obj={name : "Darazapplecollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$state.go($state.current, {}, {reload: true});
+        console.log($scope.products);
+
+    });
+}
+    $scope.DarazMICROSOFT=function(){
+        var obj={name : "Darazmicrosoftcollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$state.go($state.current, {}, {reload: true});
+        console.log($scope.products);
+
+    });
+}
+$scope.DarazNOKIA=function(){
+        var obj={name : "Daraznokiacollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$state.go($state.current, {}, {reload: true});
+        console.log($scope.products);
+
+    });
+}
+$scope.DarazSONY=function(){
+        var obj={name : "Darazsonycollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$state.go($state.current, {}, {reload: true});
+        console.log($scope.products);
+
+    });
+}
+
+   $scope.HomeshoppingSamsung=function(){
+        var obj={name : "Homeshoppingsamsungcollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+   $state.go($state.current, {}, {reload: true});
+        console.log($scope.products);
+
+    });
+
+}
+   
+  $scope.HomeshoppingQmobile=function(){
+        var obj={name : "Homeshoppingqmobilecollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$state.go($state.current, {}, {reload: true});
+        console.log($scope.products);
+
+    });
+
+}
+    $scope.HomeshoppingApple=function(){
+        var obj={name : "Homeshoppingapplecollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$state.go($state.current, {}, {reload: true});
+        console.log($scope.products);
+
+    });
+
+}
+    $scope.HomeshoppingHTC=function(){
+        var obj={name : "Homeshoppinghtccollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+
+        console.log($scope.products);
+$state.go($state.current, {}, {reload: true});
+
+    });
+
+}
+$scope.HomeshoppingSONY=function(){
+        var obj={name : "Homeshoppingsonycollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+$state.go($state.current, {}, {reload: true});
+        console.log($scope.products);
+
+    });
+
+}
+$scope.HomeshoppingMICROSOFT=function(){
+        var obj={name : "Homeshoppingmicrosoftcollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+
+        console.log($scope.products);
+        $state.go($state.current, {}, {reload: true});
+
+    });
+
+}
+$scope.HomeshoppingMOTOROLA=function(){
+        var obj={name : "Homeshoppingmotorollacollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+
+        console.log($scope.products);
+        $state.go($state.current, {}, {reload: true});
+
+    });
+
+}
+$scope.HomeshoppingLG=function(){
+        var obj={name : "Homeshoppinglgcollection"};
+    myService.getProducts(obj).success(function (res) {
+         objects=res;
+        $scope.products = res;
+        $scope.loader=true;
+
+        console.log($scope.products);
+        $state.go($state.current, {}, {reload: true});
+
+    });
+
+}
+$scope.HomeshoppingNOKIA=function(){
+        var obj={name : "Homeshoppingnokiacollection"};
     myService.getProducts(obj).success(function (res) {
          objects=res;
         $scope.products = res;
@@ -276,181 +710,6 @@ $scope.toggleLeft = function() {
    
    
 
-}]).controller('getProductsController1', ['$scope', 'myService','$location','$state', function ($scope, myService,$location,$state) {
-    $scope.products = [];
-    $scope.loader=false;
-    var obj={};
-    $scope.BytesSamsung=function()
-    {
-        
-        var obj={name : "Bytessamsungcollection"};
-    myService.getProducts(obj).success(function (res) {
-        objects=res;
-        $scope.products = res;
-        
-        console.log("I am Called")
-        console.log($scope.products);
-        $location.path('products');
-        $state.go($state.current, {}, {reload: true});
-        $location.path('products');
-
-    });
-    console.log("Yaha");
-
-}
-
-    $scope.BytesQmobile=function()
-    {
-        var obj={name : "Bytesqmobilecollection"};
-    myService.getProducts(obj).success(function (res) {
-         objects=res;
-        $scope.products = res;
-        $scope.loader=true;
-        $location.path('products')
-
-        console.log($scope.products);
-        $state.go($state.current, {}, {reload: true});
-
-    });
-}
-    $scope.BytesApple=function(){
-        var obj={name : "Bytesapplecollection"};
-    myService.getProducts(obj).success(function (res) {
-         objects=res;
-        $scope.products = res;
-        $scope.loader=true;
-$location.path('products')
-        console.log($scope.products);
-        $state.go($state.current, {}, {reload: true});
-
-    });
-}
-    $scope.BytesHTC=function(){
-        var obj={name : "Byteshtccollection"};
-    myService.getProducts(obj).success(function (res) {
-         objects=res;
-        $scope.products = res;
-        $scope.loader=true;
-$location.path('products')
-        console.log($scope.products);
-        $state.go($state.current, {}, {reload: true});
-
-    });
-}
-    $scope.DarazSamsung=function(){
-        var obj={name : "Darazsamsungcollection"};
-    myService.getProducts(obj).success(function (res) {
-         objects=res;
-        $scope.products = res;
-        $scope.loader=true;
-$location.path('products')
-        console.log($scope.products);
-        $state.go($state.current, {}, {reload: true});
-
-    });
-}
-   
-  $scope.DarazQmobile=function(){
-        var obj={name : "Darazqmobilecollection"};
-    myService.getProducts(obj).success(function (res) {
-         objects=res;
-        $scope.products = res;
-        $scope.loader=true;
-$location.path('products')
-        console.log($scope.products);
-
-        $state.go($state.current, {}, {reload: true});
-    });
-}
-    $scope.DarazApple=function(){
-        var obj={name : "Darazapplecollection"};
-    myService.getProducts(obj).success(function (res) {
-         objects=res;
-        $scope.products = res;
-        $scope.loader=true;
-$location.path('products')
-        console.log($scope.products);
-        $state.go($state.current, {}, {reload: true});
-
-    });
-}
-    $scope.DarazHTC=function(){
-        var obj={name : "Darazhtccollection"};
-    myService.getProducts(obj).success(function (res) {
-         objects=res;
-        $scope.products = res;
-        $scope.loader=true;
-$location.path('products')
-        console.log($scope.products);
-        $state.go($state.current, {}, {reload: true});
-
-    });
-}
-   $scope.HomeshoppingSamsung=function(){
-        var obj={name : "Homeshoppingsamsungcollection"};
-    myService.getProducts(obj).success(function (res) {
-         objects=res;
-        $scope.products = res;
-        $scope.loader=true;
-    $location.path('products')
-        console.log($scope.products);
-        $state.go($state.current, {}, {reload: true});
-
-    });
-    console.log("Show",objects)
-$scope.products=objects;
-$scope.loader=true;
-}
-   
-  $scope.HomeshoppingQmobile=function(){
-        var obj={name : "Homeshoppingqmobilecollection"};
-    myService.getProducts(obj).success(function (res) {
-         objects=res;
-        $scope.products = res;
-        $scope.loader=true;
-$location.path('products')
-        console.log($scope.products);
-        $state.go($state.current, {}, {reload: true});
-
-    });
-    console.log("Show",objects)
-$scope.products=objects;
-$scope.loader=true;
-}
-    $scope.HomeshoppingApple=function(){
-        var obj={name : "Homeshoppingapplecollection"};
-    myService.getProducts(obj).success(function (res) {
-         objects=res;
-        $scope.products = res;
-        $scope.loader=true;
-$location.path('products')
-        console.log($scope.products);
-        $state.go($state.current, {}, {reload: true});
-
-    });
-    console.log("Show",objects)
-$scope.products=objects;
-$scope.loader=true;
-}
-    $scope.HomeshoppingHTC=function(){
-        var obj={name : "Homeshoppinghtccollection"};
-    myService.getProducts(obj).success(function (res) {
-         objects=res;
-        $scope.products = res;
-        $scope.loader=true;
-$location.path('products')
-        console.log($scope.products);
-        $state.go($state.current, {}, {reload: true});
-
-    });
-
-}
-
-
-
-console.log("Show",objects)
-$scope.products=objects;
-$scope.loader=true;
 }]).controller('getDetails', ['$scope', 'myService', '$routeParams', '$stateParams',  '$location',function ($scope, myService, $routeParams, $stateParams,$location
     ) {
     $scope.id = $stateParams.id;
@@ -509,13 +768,32 @@ myService.logout().success(function (res) {
 }]).controller('WatchShow', ['$scope', 'myService', function ($scope, myService) {
     $scope.products = [];
     $scope.loader=false;
+     $scope.boring=false;
+    var c=0;
+    $scope.boring=true;
     myService.watchShow().success(function (res) {
+        if(res){
         $scope.products = res;
         $scope.loader=true;
-  
-        console.log($scope.products);
+        $scope.boring=false;
+        for(var i in res){
+            c++;
+        }
+        for(var i=0;i<c;i++){
+            console.log("Alert k liye check kerraha hai");
+            if(res[i].productPrice != res[i].newProductPrice){
+                alert("              Hurrah !\n       Price of the Product \n "+res[i].productName+"\n       Has Been Changed From\n        "+res[i].productPrice+" To "+res[i].newProductPrice);
+            }
 
+
+        }
+
+        
+        console.log($scope.products);
+    }
+   
     });
+       
 
 }]).controller('getWatchDetails', ['$scope', 'myService', '$stateParams', '$state',function ($scope, myService, $stateParams,$state
     ) {

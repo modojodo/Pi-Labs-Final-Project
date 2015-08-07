@@ -8,17 +8,20 @@ var port = process.env.PORT || 3030;
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var Stores=["Bytessamsungcollection","Bytesapplecollection","Bytesqmobilecollection","Byteshtccollection","Homeshoppingsamsungcollection","Homeshoppingapplecollection","Homeshoppingqmobilecollection","Homeshoppinghtccollection","Darazsamsungcollection","Darazapplecollection","Darazqmobilecollection"]
+var Stores=["Bytessamsungcollection","Bytesapplecollection","Bytesqmobilecollection","Byteshtccollection","Byteslgcollection","Bytesmicrosoftcollection","Bytesmotorolacollection","Bytesnokiacollection","Bytessonycollection","Homeshoppingsamsungcollection","Homeshoppingapplecollection","Homeshoppingqmobilecollection","Homeshoppinghtccollection","Homeshoppingsonycollection","Homeshoppingmicrosoftcollection","Homeshoppingmotorollacollection","Homeshoppinglgcollection","Homeshoppingnokiacollection","Darazsamsungcollection","Darazapplecollection","Darazqmobilecollection","Darazmicrosoftcollection","Daraznokiacollection","Darazsonycollection"]
 var db = require('monk')('umer:1234@ds061318.mongolab.com:61318/dropped');
 var counter=0;
-
+var zerocounter =0;
 
 //Requiring the crawler scripts
 
 var bytes= require('./bytes.js');
 var homeshopping = require('./home-shopping.js')
 var daraz = require('./daraz.js')
-setInterval(fetchData(),43200000);
+if(counter>0){
+    setInterval(fetchData(),43200000);
+}
+
 if(counter>0){
 
 
@@ -378,7 +381,7 @@ function fetchWatchProductsFromDB(collectionName, res) {
             console.log("Ye watching ka docs hai",docs);
            if(counter==0){
             
-            //CheckPrice();
+            CheckPrice();
             counter++;
         }
             console.log("Show hoja bhai",docs);

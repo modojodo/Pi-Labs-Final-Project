@@ -12,14 +12,26 @@ var port = process.env.PORT || 3030;
 var samsung = "Darazsamsungcollection";
 var apple = "Darazapplecollection";
 var qmobile = "Darazqmobilecollection";
+var microsoft= "Darazmicrosoftcollection"
+var nokia= "Daraznokiacollection"
+var sony= "Darazsonycollection"
+
 var array=[];
 
 var samungPhone = "samsung";
 var applePhone = "apple";
 var qmobilePhone = "qmobile"
+var microsoftPhone = "microsoft";
+var nokiaPhone = "nokia"
+var sonyPhone = "sony";
+
 var sam = "Samsung"
 var appl = "Apple"
 var qmob = "QMobile"
+var micro = "Microsoft"
+var nok = "Nokia"
+var son = "Sony"
+
 var page;
 
 
@@ -28,6 +40,11 @@ exports.crawlAndStore = function () {
    getProducts(samungPhone, samsung, sam);
     getProducts(applePhone, apple, appl);
    getProducts(qmobilePhone, qmobile, qmob);
+   getProducts(microsoftPhone, microsoft, micro);
+   getProducts(nokiaPhone, nokia, nok);
+   getProducts(sonyPhone, sony, son);
+
+
 }
 
 function getProducts(brand_id, storage, match) {
@@ -119,63 +136,5 @@ function getProducts(brand_id, storage, match) {
 console.log("Done");
 }
 
-/*function fetchWatchProductsFromDB(collectionName, res) {
-    var collect = db.get(collectionName);
-    collect.findOne({userid:MatchUser}, {}, function (e, docs) {
-        //console.log(collectionName,docs);
-        if (docs) {
-            console.log("Ye watching ka docs hai",docs);
-            //fetchData();
-            counter++;
-            console.log("Show hoja bhai",docs.UserProduct);
-            sendData(res, docs.UserProduct);
-        }
-        else {
-            return null;
-        }
-    });
+/*
 */
-
-/*var collection = db.get("Watch_Products_Collection");
-var dataobj={productName: req.body.productName,productPrice: req.body.productPrice,productImg: req.body.productImg, productLink: req.body.productLink};
-var obj={userid : MatchUser, UserProduct:req.body};
-
-  collection.findOne({userid: MatchUser}, {}, function (e, docs2) {
-    if(docs2){
-       collection.remove({});
-        console.log("Ye purana hai",docs2.UserProduct);
-        console.log("Ye naya hai ", req.body);
-        var obj={}
-/*           array.push(docs2.UserProduct);
-           array.push(req.body);*/
-
-         /*  var js=JSON.parse(array);
-            console.log(js)
-            obj={userid : MatchUser, UserProduct:docs2.UserProduct+req.body};
-               
- collection.insert(obj, function (err, doc) {
-                       
-                        if (err) {
-                            // If it failed, return error
-                            res.send(false);
-                        }
-                        else {
-                            res.send(true);
-                        }
-                    });
-    }
-else{
- collection.insert(obj, function (err, doc) {
-                       
-                        if (err) {
-                            // If it failed, return error
-                            res.send(false);
-                        }
-                        else {
-                            res.send(true);
-                        }
-                    });
-
-}
-});
-});*/

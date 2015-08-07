@@ -1,5 +1,7 @@
 /* Empty. Add your own CSS if you like */
-
+.title h1{
+    color:blue;
+}
 .item-avatar img {
     background-color: white;
 }
